@@ -1,4 +1,3 @@
-
 /**
  * Model for Conway's Game of Life.
  *
@@ -23,6 +22,8 @@ public class GameOfLife {
         }
 
         society = new boolean[rows][cols];
+
+        
     }
 
     /** Returns the number of rows in the society. */
@@ -37,21 +38,22 @@ public class GameOfLife {
 
     /** Makes the location at row, col alive. */
     public void growCellAt(int row, int col) {
-        if (row >= 0 && row < numberOfRows() && col >= 0 && col < numberOfColumns()) {
+        if(row >= 0 && row < society.length && col >= 0 && col < society[0].length) {
             society[row][col] = true;
-        }
+        } 
     }
 
     /** Makes the location at row, col dead. */
     public void killCellAt(int row, int col) {
-        if (row >= 0 && row < numberOfRows() && col >= 0 && col < numberOfColumns()) {
+        if(row >= 0 && row < society.length && col >= 0 && col < society[0].length) {
             society[row][col] = false;
         }
+
     }
 
     /** Returns true if the location contains a live cell. */
     public boolean cellAt(int row, int col) {
-        if (row >= 0 && row < numberOfRows() && col >= 0 && col < numberOfColumns()) {
+        if(row >= 0 && row < society.length && col >= 0 && col < society[0].length) {
             return society[row][col];
         }
         return false;
@@ -59,8 +61,8 @@ public class GameOfLife {
 
     /** Makes every location in the society dead. */
     public void clear() {
-        for (int r = 0; r < numberOfRows(); r++) {
-            for (int c = 0; c < numberOfColumns(); c++) {
+        for (int r = 0; r < society.length; r++) {
+            for (int c = 0; c < society[r].length; c++) {
                 society[r][c] = false;
             }
         }
@@ -71,22 +73,15 @@ public class GameOfLife {
      *
      * A location can have at most eight neighbors. Locations outside the
      * board DO NOT wrap around to the other side.
+     *
+     * TODO: Complete this method.
      */
     public int neighborCount(int row, int col) {
-        int count = 0;
+        // TODO: Traverse the 3 x 3 neighborhood around row, col.
+        //       Skip row, col itself.
+        //       Check bounds before reading society[r][c].
 
-        for (int r = row - 1; r <= row + 1; r++) {
-            for (int c = col - 1; c <= col + 1; c++) {
-                if (r == row && c == col) {
-                    continue;
-                }
-                if (r >= 0 && r < numberOfRows() && c >= 0 && c < numberOfColumns() && society[r][c]) {
-                    count++;
-                }
-            }
-        }
-
-        return count;
+        return 0;
     }
 
     /**
@@ -97,41 +92,30 @@ public class GameOfLife {
      * 2. A live cell with 2 or 3 live neighbors survives.
      * 3. A live cell with fewer than 2 neighbors dies from isolation.
      * 4. A live cell with more than 3 neighbors dies from overpopulation.
+     *
+     * TODO: Complete this method.
      */
     public void update() {
-        boolean[][] nextGeneration = new boolean[numberOfRows()][numberOfColumns()];
-
-        for (int r = 0; r < numberOfRows(); r++) {
-            for (int c = 0; c < numberOfColumns(); c++) {
-                int liveNeighbors = neighborCount(r, c);
-
-                if (society[r][c]) {
-                    nextGeneration[r][c] = (liveNeighbors == 2 || liveNeighbors == 3);
-                } else {
-                    nextGeneration[r][c] = (liveNeighbors == 3);
-                }
-            }
-        }
-
-        society = nextGeneration;
+        // TODO: Create a SECOND 2D boolean array for the next generation.
+        //
+        // IMPORTANT:
+        // Do not change society while you are still using it to calculate
+        // neighbors. Every cell in the new generation must be based on the
+        // same old generation.
     }
 
     /**
      * Returns a text version of the board.
      * O = live cell
      * . = dead cell
+     *
+     * TODO: Complete this method.
      */
     @Override
     public String toString() {
-        StringBuilder result = new StringBuilder();
+        // TODO: Use nested loops to build one String containing the board.
+        //       Add a newline after every row.
 
-        for (int r = 0; r < numberOfRows(); r++) {
-            for (int c = 0; c < numberOfColumns(); c++) {
-                result.append(society[r][c] ? 'O' : '.');
-            }
-            result.append('\n');
-        }
-
-        return result.toString();
+        return "Complete toString() to display the text version of the board.\n";
     }
 }
