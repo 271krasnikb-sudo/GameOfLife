@@ -1,7 +1,7 @@
 -Why is a 2D array appropriate for the Game of Life?
 The board is a 2d game with every cordinate having an x and y value so a 2d array best repersents that.
 -What do society.length and society[row].length represent? 
-society.length repersents the width of the board while society[row].length repersents the length of the row
+society.length repersents the height of the board while society[row].length repersents the length of the board
 -Why could changing society directly while traversing it produce incorrect results?
 When cells are updated closer to the start of the traversal, it could change how cells later in the traversing are updated
 -Why must neighborCount() check array boundaries?

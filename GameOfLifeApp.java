@@ -28,6 +28,38 @@ public class GameOfLifeApp extends JFrame {
     private final GameOfLife game;
     private final JButton[][] cells;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
     private final JButton startButton;
 
     private final JLabel generationLabel;
